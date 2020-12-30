@@ -1,0 +1,30 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+placeholder_text_inbound:
+  type: Spina::Admin::Mail::InboundEmail
+  from_addresses:
+    - someone@letraset.com
+  to_addresses:
+    - someone@unimark.com
+  subject: Some placeholder text
+  date: <%= ::Time.new(1963, 8, 25, 10, 0, 0, '-05:00') %>
+  read: false
+  thread: placeholder_text
+  message_id: <%= ::Mail::MessageIdField.new('<5d46c05f3b1b9_47403fe9fc93ba0046480@letraset.com.mail>').message_id %>
+
+new_book_inbound:
+  type: Spina::Admin::Mail::InboundEmail
+  from_addresses:
+    - cicero@senatus.roma.ir
+  to_addresses:
+    - brutus@senatus.roma.ir
+  subject: 'Liber meus novus: De finibus bonorum et malorum'
+  date: <%= ::Time.new(-45, 12, 25, 10, 0, 0, '+01:00') %>
+  read: false
+  thread: new_book
+  message_id: <%= ::Mail::MessageIdField.new('<5d46c05f0b1b9_47403fe1fd33ba0046170@senatus.roma.ir.mail>').message_id %>

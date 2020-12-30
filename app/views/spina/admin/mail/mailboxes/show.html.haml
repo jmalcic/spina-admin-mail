@@ -1,0 +1,9 @@
+.well
+  .table-container
+    %table.table.table-clickable
+      %thead
+        %tr
+          %th= Spina::Admin::Mail::Thread.human_attribute_name :latest_email_date
+          %th{ colspan: 2 }= Spina::Admin::Mail::Thread.human_attribute_name :correspondents
+          %th= Spina::Admin::Mail::Thread.human_attribute_name :subject
+      %tbody= render partial: 'spina/admin/mail/shared/thread', collection: @mailbox.threads

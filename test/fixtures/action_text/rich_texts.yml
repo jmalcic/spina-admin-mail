@@ -1,0 +1,106 @@
+# one:
+#   record: name_of_fixture (ClassOfFixture)
+#   name: content
+#   body: <p>In a <i>million</i> stars!</p>
+
+placeholder_text:
+  record: placeholder_text_inbound (Spina::Admin::Mail::Email)
+  name: message
+  body:
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id ex ligula. Donec in commodo quam, ac facilisis neque.
+    Integer dui ante, vehicula vitae rhoncus vitae, molestie vel nulla. Aliquam erat volutpat. Sed tincidunt quis nulla
+    vitae convallis. Nam lobortis tincidunt facilisis. Vivamus vitae dignissim ex, sed maximus tortor. Donec fermentum
+    lacus nibh, a maximus urna lacinia at. Proin non feugiat ante. Sed imperdiet orci sit amet eros luctus aliquam.
+    Nulla in odio urna. In at lectus vitae leo consequat accumsan id sit amet orci. Nunc convallis ex a euismod
+    convallis. Donec eleifend justo sit amet magna venenatis, ut interdum ex eleifend. Nulla convallis, lectus et
+    pharetra dapibus, nulla ligula laoreet nunc, quis blandit lectus erat sit amet justo.
+
+placeholder_text_response:
+  record: placeholder_text_outbound (Spina::Admin::Mail::Email)
+  name: message
+  body:
+    <p>Mr. One,</p>
+    <p>Thank you very much for this sample. It really looks great!</p>
+    <p>Kind regards,</p>
+    <p>Some One</p>
+
+placeholder_text_alternative_draft_1:
+  record: placeholder_text_draft_1 (Spina::Admin::Mail::Email)
+  name: message
+  body:
+    Nam condimentum elit eget ultrices tincidunt. Phasellus tristique sodales nibh et faucibus. In at dapibus augue, ac
+    bibendum dolor. Nunc tristique rutrum odio, ac condimentum ipsum. Cras at tortor in ante ornare egestas sit amet
+    vitae nunc. Donec tu libero iaculis, laoreet latcus vitae, ultricies est. Ut pulvinar elit vitae est rhoncus, sed
+    condimentum felis luctus. Ni sagittis ullamcorper cursus. Aenean velit metus, auctor et nisl ut, mattis imperdiet
+    neque. Mauris sodales viverra nisl, te consequat est convallis a. Curabitur ut ante massa. Suspendisse et commodo
+    neque. Cras semper ex nisi, non laoreet justo porta et. Suspendisse sed est lacus.
+
+placeholder_text_alternative_draft_2:
+  record: placeholder_text_draft_2 (Spina::Admin::Mail::Email)
+  name: message
+  body:
+    Nam condimentum elit eget ultrices tincidunt. Phasellus tristique sodales nibh et faucibus. In at dapibus augue, ac
+    bibendum dolor. Nunc tristique rumrum odio, ac condimentum ipsum. Cras at tortor in ante ornare egestas sit amet
+    vitae nunc. Donec tu libero iaculis, laoreet latcus vitae, ultricies est. Ut pulvinar elit vitae est rhoncus, sed
+    condimentum felis luctus. Ni sagittis ullamcorper cursus. Aenean velit metus, auctor et nisl ut, mattis imperdiet
+    neque. Mauris sodales viverra nils, ti consequat est convallis e. Curabitur ut ante massa. Suspendisse et commodo
+    neque. Cras semper ex nisi, non laoreet justo porta at. Suspendisse sed est lacus.
+
+placeholder_text_forward:
+  record: placeholder_text_forward (Spina::Admin::Mail::Email)
+  name: message
+  body:
+    'Look at this!!!
+    Begin forward:
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id ex ligula. Donec in commodo quam, ac facilisis neque.
+    Integer dui ante, vehicula vitae rhoncus vitae, molestie vel nulla. Aliquam erat volutpat. Sed tincidunt quis nulla
+    vitae convallis. Nam lobortis tincidunt facilisis. Vivamus vitae dignissim ex, sed maximus tortor. Donec fermentum
+    lacus nibh, a maximus urna lacinia at. Proin non feugiat ante. Sed imperdiet orci sit amet eros luctus aliquam.
+    Nulla in odio urna. In at lectus vitae leo consequat accumsan id sit amet orci. Nunc convallis ex a euismod
+    convallis. Donec eleifend justo sit amet magna venenatis, ut interdum ex eleifend. Nulla convallis, lectus et
+    pharetra dapibus, nulla ligula laoreet nunc, quis blandit lectus erat sit amet justo.'
+
+de_finibus:
+  record: new_book_inbound (Spina::Admin::Mail::Email)
+  name: message
+  body:
+    <blockquote>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+    rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+    Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+    eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit amet
+    consectetur adipisci velit, sed quia non-numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam
+    quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi
+    ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam
+    nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</blockquote>
+
+de_finibus_response:
+  record: new_book_outbound (Spina::Admin::Mail::Email)
+  name: message
+  body: Me placet.
+
+de_finibus_alternative:
+  record: new_book_draft (Spina::Admin::Mail::Email)
+  name: message
+  body:
+    <blockquote>At vero eos et accusamus atque iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum
+    deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non-provident,
+    similique sunt in culpa, qui officia deserunt mollitia animi, id non est laborum et dolorum fuga. Et harum quidem rerum
+    facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit,
+    quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+    Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates
+    repudiandae sint sed molestiae non-recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
+    voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat…</blockquote>
+
+de_finibus_forward:
+  record: new_book_forward (Spina::Admin::Mail::Email)
+  name: message
+  body:
+    'Ecce:
+    <blockquote>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+    rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+    Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+    eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit amet
+    consectetur adipisci velit, sed quia non-numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam
+    quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi
+    ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam
+    nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</blockquote>'

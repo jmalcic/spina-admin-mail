@@ -1,0 +1,82 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  spina:
+    show: Show
+    email: Email
+    admin:
+      mail:
+        title: Mail
+        website:
+          inbound_emails: Inbound emails
+          outbound_emails: Outbound emails
+          mailboxes: Mailboxes
+          emails: Emails
+          threads: "Threads"
+        inbound_emails:
+          index:
+            all: All
+          save: Save inbound email
+          edit: Edit
+          delete_confirmation: "Are you sure you want to delete the inbound email <strong>%{inbound_email}</strong>?"
+          no_inbound_emails: There are no inbound emails
+          mark_unread: Mark unread
+          reply: Reply
+        outbound_emails:
+          new: New outbound email
+          save: Save outbound email
+          edit: Edit
+          delete_confirmation: "Are you sure you want to delete the outbound email <strong>%{outbound_email}</strong>?"
+          no_outbound_emails: There are no outbound emails
+          index:
+            all: All
+        mailboxes:
+          new: New mailbox
+          save: Save mailbox
+          delete_confirmation: "Are you sure you want to delete the mailbox <strong>%{mailbox}</strong>?"
+          no_mailboxes: There are no mailboxes
+  activerecord:
+    errors:
+      messages:
+        invalid_email_address: is not an email address
+      models:
+        spina/admin/mail/outbound_email:
+          attributes:
+            base:
+              recipient_must_be_present: At least one recipient must be present
+    models:
+      spina/admin/mail:
+        inbound_email: Inbound email
+    attributes:
+      spina/admin/mail:
+        inbound_email:
+          to_addresses: To

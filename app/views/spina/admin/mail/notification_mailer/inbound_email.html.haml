@@ -1,0 +1,8 @@
+%div
+  = "On #{l(@inbound_email.date, format: :long)}, #{@inbound_email.from_addresses.collect(&:to_s).to_sentence} wrote:"
+  %blockquote
+    = @inbound_email.message
+
+%div
+  You have received this message because you follow the mailbox it was sent to (#{@mailbox.display_name}).
+  = link_to 'Unfollow this mailbox', spina.admin_mail_mailbox_url(@mailbox)

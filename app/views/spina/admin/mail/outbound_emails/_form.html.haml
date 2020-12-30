@@ -1,0 +1,67 @@
+- if @outbound_email.errors.any?
+  - content_for :notifications do
+    .notification.notification-danger.animated.fadeInRight
+      = icon('exclamation')
+      .notification-message
+        = t 'spina.notifications.alert'
+        %small
+        - @outbound_email.errors.full_messages.each do |message|
+          = message
+          - unless @outbound_email.errors.full_messages[-1] == message
+            %br
+      = link_to '#', data: { close_notification: true } do
+        = icon('cross')
+
+= form_for @outbound_email, html: { autocomplete: 'off' } do |f|
+  %header#header
+    = render partial: 'spina/admin/shared/breadcrumbs'
+
+    #header_actions
+      %button.button.button-primary{ type: 'submit' }
+        = icon('check')
+        = t 'spina.admin.mail.outbound_emails.save'
+
+      = link_to t('spina.cancel'), spina.admin_mail_outbound_emails_path, class: 'button', style: 'margin-right: 0'
+
+  .well
+    .horizontal-form
+      .horizontal-form-group
+        .horizontal-form-label= Spina::Admin::Mail::InboundEmail.human_attribute_name :mailboxes
+        .horizontal-form-content
+          = f.fields_for :thread do |thread_fields|
+            .form-checkbox= thread_fields.collection_check_boxes :mailbox_ids, Spina::Admin::Mail::Mailbox.all, :id, :display_name, required: true, multiple: true
+          = f.hidden_field :thread_id unless @outbound_email.new_record?
+      .horizontal-form-group
+        .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :to_addresses
+        .horizontal-form-content
+          - if @outbound_email.to_addresses.present?
+            - @outbound_email.to_addresses.each do |address|
+              = f.email_field :to_addresses, multiple: true, value: address
+          - else
+            = f.email_field :to_addresses, multiple: true
+      .horizontal-form-group
+        .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :cc_addresses
+        .horizontal-form-content
+          - if @outbound_email.cc_addresses.present?
+            - @outbound_email.cc_addresses.each do |address|
+              = f.email_field :cc_addresses, multiple: true, value: address
+          - else
+            = f.email_field :cc_addresses, multiple: true
+      .horizontal-form-group
+        .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :bcc_addresses
+        .horizontal-form-content
+          - if @outbound_email.bcc_addresses.present?
+            - @outbound_email.bcc_addresses.each do |address|
+              = f.email_field :bcc_addresses, multiple: true, value: address
+          - else
+            = f.email_field :bcc_addresses, multiple: true
+      .horizontal-form-group
+        .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :subject
+        .horizontal-form-content= f.text_field :subject#, required: true
+      .horizontal-form-group
+        .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :message
+        .horizontal-form-content= f.rich_text_area :message, class: %w[text-input trix-content], required: true
+        = f.hidden_field :quoted_email_id
+
+  - unless @outbound_email.new_record?
+    .pull-right= link_to t('spina.permanently_delete'), admin_mail_outbound_email_path(@outbound_email), method: :delete, data: { confirm: t('spina.admin.mail.outbound_emails.delete_confirmation', outbound_email: "#{@outbound_email.subject}") }, class: 'button button-link button-danger'

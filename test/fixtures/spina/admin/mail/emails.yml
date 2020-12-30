@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+placeholder_text_draft_1:
+  from_addresses: []
+  to_addresses:
+    - someone@unimark.com
+  subject: Some placeholder text
+  date: <%= ::Time.new(1963, 8, 25, 7, 30, 0, '-05:00') %>
+  thread: placeholder_text
+  message_id: <%= ::Mail::MessageIdField.new('<5d96a05d3b1b9_47466fc9fc93be8096420@letraset.com.mail>').message_id %>
+
+placeholder_text_draft_2:
+  from_addresses: []
+  to_addresses:
+    - someone@unimark.com
+  subject: Some placeholder text
+  date: <%= ::Time.new(1963, 8, 25, 8, 0, 0, '-05:00') %>
+  thread: placeholder_text
+  message_id: <%= ::Mail::MessageIdField.new('<5d96c05f3b1b9_47463fe9fc93ba8046480@letraset.com.mail>').message_id %>
+
+new_book_draft:
+  from_addresses: []
+  to_addresses:
+    - brutus@senatus.roma.ir
+  subject: 'Liber meus novus: De finibus bonorum et malorum'
+  date: <%= ::Time.new(-45, 12, 25, 9, 0, 0, '+01:00') %>
+  thread: new_book
+  message_id: <%= ::Mail::MessageIdField.new('<5a46c05f3c1b9_47703fe9fc93ba0096480@letraset.com.mail>').message_id %>
+
+placeholder_text_forward:
+  from_addresses: []
+  to_addresses:
+    - someone@unimark.com
+  subject: 'Fw: Some placeholder text'
+  date: <%= ::Time.new(1963, 8, 25, 20, 10, 0, '-05:00') %>
+  thread: placeholder_text
+  message_id: <%= ::Mail::MessageIdField.new('<5d96c05f3b1e9_47463fe9fc93fa8046180@letraset.com.mail>').message_id %>
+
+new_book_forward:
+  from_addresses: []
+  to_addresses:
+    - brutus@senatus.roma.ir
+  subject: 'Fw: Liber meus novus: De finibus bonorum et malorum'
+  date: <%= ::Time.new(-45, 12, 26, 12, 22, 0, '+01:00') %>
+  thread: new_book
+  message_id: <%= ::Mail::MessageIdField.new('<5a46a05f3c1b9_49703fe6fc93ba0093480@letraset.com.mail>').message_id %>

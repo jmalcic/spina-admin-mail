@@ -1,0 +1,40 @@
+{
+  "name": "spina-admin-mail",
+  "version": "0.1.0",
+  "description": "Email plugin for Spina.",
+  "main": "app/assets/javascripts/spina/admin/mail.js",
+  "files": [
+    "app/assets/javascripts/*.js",
+    "src/*.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "jmalcic/spina-admin-mail"
+  },
+  "keywords": [
+    "email",
+    "rails",
+    "spina-cms"
+  ],
+  "author": "Justin Malčić <j.malcic@me.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmalcic/spina-admin-mail/issues"
+  },
+  "homepage": "https://jmalcic.github.io/projects/spina-admin-mail",
+  "dependencies": {
+    "@primer/css": "^12.4.1",
+    "@primer/octicons": "^9.1.1",
+    "@rails/actiontext": "^6.0.0-rc1",
+    "datatables": "^1.10.18",
+    "stimulus": "^1.1.1",
+    "trix": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0"
+  },
+  "scripts": {
+    "lint": "eslint app/assets/javascripts"
+  }
+}

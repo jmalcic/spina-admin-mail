@@ -1,0 +1,104 @@
+- content_for(:header_actions) do
+  = link_to spina.edit_admin_mail_outbound_email_path(@outbound_email), class: 'button' do
+    = icon('pencil-outline')
+    = t 'spina.admin.mail.outbound_emails.edit'
+  = link_to spina.new_admin_mail_outbound_email_path(params: { quoted_email: { id: @outbound_email.id } }), method: :get, class: 'button button-primary', style: 'margin-right: 0' do
+    = icon('comment')
+    = t('spina.admin.mail.inbound_emails.reply')
+
+.horizontal-form
+  - if @outbound_email.thread_predecessors.any?
+    .well
+      .table-container
+        %table.table.table-clickable
+          %thead
+            %tr
+              %th
+              %th
+                .table-sort= Spina::Admin::Mail::Email.human_attribute_name :date
+              %th
+                .table-sort= Spina::Admin::Mail::Email.human_attribute_name :from_addresses
+              %th
+                .table-sort= Spina::Admin::Mail::Email.human_attribute_name :to_addresses
+              %th
+                .table-sort= Spina::Admin::Mail::Email.human_attribute_name :subject
+
+          %tbody
+            = render partial: 'spina/admin/mail/shared/email', collection: @outbound_email.thread_predecessors
+
+  .well
+    .horizontal-form-group
+      .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :mailboxes
+      .horizontal-form-content
+        %ul
+          - @outbound_email.mailboxes.each do |mailbox|
+            %li= mailbox.display_name
+    .horizontal-form-group
+      .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :from_addresses
+      .horizontal-form-content
+        %ul
+          - @outbound_email.from_addresses.each do |address|
+            %li= address.to_s
+    .horizontal-form-group
+      .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :to_addresses
+      .horizontal-form-content
+        %ul
+          - @outbound_email.to_addresses.each do |address|
+            %li= address.to_s
+    - if @outbound_email.reply_to.present?
+      .horizontal-form-group
+        .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :reply_to
+        .horizontal-form-content= @outbound_email.reply_to
+    - if @outbound_email.cc_addresses.present?
+      .horizontal-form-group
+        .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :cc_addresses
+        .horizontal-form-content
+          %ul
+            - @outbound_email.cc_addresses.each do |address|
+              %li= address.to_s
+    - if @outbound_email.bcc_addresses.present?
+      .horizontal-form-group
+        .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :bcc_addresses
+        .horizontal-form-content
+          %ul
+            - @outbound_email.bcc_addresses.each do |address|
+              %li= address.to_s
+    .horizontal-form-group
+      .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :subject
+      .horizontal-form-content= @outbound_email.subject
+    .horizontal-form-group
+      .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :priority
+      .horizontal-form-content
+        - case @outbound_email.priority
+        - when 'high'
+          = icon('exclamation')
+          high
+        - when 'low'
+          = icon('min')
+          low
+        - when 'normal'
+          normal
+        - else
+          = nil
+    .horizontal-form-group
+      .horizontal-form-label= Spina::Admin::Mail::OutboundEmail.human_attribute_name :message
+      .horizontal-form-content= @outbound_email.message
+
+  - if @outbound_email.thread_successors.any?
+    .well
+      .table-container
+        %table.table.table-clickable
+          %thead
+            %tr
+              %th
+              %th
+                .table-sort= Spina::Admin::Mail::Email.human_attribute_name :date
+              %th
+                .table-sort= Spina::Admin::Mail::Email.human_attribute_name :from_addresses
+              %th
+                .table-sort= Spina::Admin::Mail::Email.human_attribute_name :to_addresses
+              %th
+                .table-sort= Spina::Admin::Mail::Email.human_attribute_name :subject
+
+          %tbody
+            = render partial: 'spina/admin/mail/shared/email', collection: @outbound_email.thread_successors

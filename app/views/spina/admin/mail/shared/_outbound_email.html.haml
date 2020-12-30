@@ -1,0 +1,30 @@
+%tr
+  %td
+    - case outbound_email.priority
+    - when /^high/
+      .label.label-alert
+        = icon('exclamation')
+        high priority
+    - when /^low/
+      .label.label-info
+        = icon('min')
+        low priority
+    - else
+      = nil
+  %td= l outbound_email.date, format: :short
+  %td
+    %ul
+      - outbound_email.to_addresses.each do |address|
+        %li= address.to_s
+  %td
+    %ul
+      - outbound_email.mailboxes.each do |mailbox|
+        %li= mailbox.display_name
+  %td= outbound_email.subject
+  %td.align-right
+    = link_to spina.admin_mail_outbound_email_path(outbound_email), class: 'button button-small button-link' do
+      = icon('eye')
+      = t('spina.show')
+    = link_to spina.edit_admin_mail_outbound_email_path(outbound_email), class: 'button button-small button-link' do
+      = icon('pencil-outline')
+      = t('spina.edit')

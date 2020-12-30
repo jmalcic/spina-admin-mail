@@ -1,0 +1,41 @@
+- if @mailbox.errors.any?
+  - content_for :notifications do
+    .notification.notification-danger.animated.fadeInRight
+      = icon('exclamation')
+      .notification-message
+        = t 'spina.notifications.alert'
+        %small
+        - @mailbox.errors.full_messages.each do |message|
+          = message
+          - unless @mailbox.errors.full_messages[-1] == message
+            %br
+      = link_to '#', data: { close_notification: true } do
+        = icon('cross')
+
+= form_for @mailbox, html: { autocomplete: 'off' } do |f|
+  %header#header
+    = render partial: 'spina/admin/shared/breadcrumbs'
+
+    #header_actions
+      %button.button.button-primary{ type: 'submit' }
+        = icon('check')
+        = t 'spina.admin.mail.mailboxes.save'
+
+      = link_to t('spina.cancel'), spina.admin_mail_mailboxes_path, class: 'button', style: 'margin-right: 0'
+
+  .well
+    .horizontal-form
+      .horizontal-form-group
+        .horizontal-form-label= Spina::Admin::Mail::Mailbox.human_attribute_name :display_name
+        .horizontal-form-content= f.text_field :display_name, required: true
+      .horizontal-form-group
+        .horizontal-form-label= Spina::Admin::Mail::Mailbox.human_attribute_name :address
+        .horizontal-form-content= f.email_field :address, required: true
+      .horizontal-form-group
+        .horizontal-form-label= Spina::Admin::Mail::Mailbox.human_attribute_name :followers
+        .horizontal-form-content
+          .form-checkbox= f.collection_check_boxes :follower_ids, Spina::User.all, :id, :name, multiple: true
+
+
+  - unless @mailbox.new_record?
+    .pull-right= link_to t('spina.permanently_delete'), admin_mail_mailbox_path(@mailbox), method: :delete, data: { confirm: t('spina.admin.mail.mailboxes.delete_confirmation', mailbox: "#{@mailbox.display_name}") }, class: 'button button-link button-danger'

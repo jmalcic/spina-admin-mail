@@ -1,0 +1,10 @@
+%tr
+  %td= mailbox.display_name
+  %td= mailbox.address
+  %td.align-right
+    = link_to spina.admin_mail_mailbox_path(mailbox), class: 'button button-small button-link' do
+      = icon('eye')
+      = t('spina.show')
+    = link_to spina.edit_admin_mail_mailbox_path(mailbox), class: 'button button-small button-link' do
+      = icon('pencil-outline')
+      = t('spina.edit')

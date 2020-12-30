@@ -1,0 +1,5 @@
+!= "On #{l(@inbound_email.date, format: :long)}, #{@inbound_email.from_addresses.collect(&:to_s).to_sentence} wrote:"
+!= format_paragraph(@inbound_email.message.to_plain_text)
+\
+You have received this message because you follow the mailbox it was sent to (#{@mailbox.display_name}).
+Unfollow this mailbox at #{spina.admin_mail_mailbox_url(@mailbox)}.

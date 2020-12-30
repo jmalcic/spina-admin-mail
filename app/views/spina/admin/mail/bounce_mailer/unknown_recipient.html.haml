@@ -1,0 +1,16 @@
+%p The following recipients you sent this message to do not exist:
+%ul
+  - @unknown_recipients.collect(&:to_s).each do |recipient|
+    %li
+      %address!= recipient
+%p Check the address(es) you entered again.
+%p If you think you have received this message in error, contact the website maintainer.
+
+%div
+  In the original message, you wrote:
+  %blockquote= @html.body.decoded
+  - if attachments.any?
+    Additionally, you attached #{attachments.count} file(s), also attached to this message:
+    %ul
+      - attachments.each do |attachment|
+        %li= attachment.filename

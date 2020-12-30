@@ -1,0 +1,7 @@
+= @outbound_email.message
+
+- if @quoted_email.present?
+  %div
+    = "On #{l(@quoted_email.date, format: :long)}, #{@quoted_email.from_addresses.collect(&:to_s).to_sentence} wrote:"
+    %blockquote
+      = @quoted_email.message

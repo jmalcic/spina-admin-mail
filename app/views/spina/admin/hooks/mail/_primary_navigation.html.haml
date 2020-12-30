@@ -1,0 +1,18 @@
+%li{ class: ('active' if %w[inbound_emails outbound_emails mailboxes emails].include? controller_name) }
+  = link_to spina.admin_mail_inbound_emails_path do
+    = icon('mail')
+    = t('spina.admin.mail.title')
+    = icon('caret-right')
+
+    %ul
+      %li{ class: ('active' if %w[inbound_emails].include? controller_name) }
+        = link_to t('spina.admin.mail.website.inbound_emails'), spina.admin_mail_inbound_emails_path
+      %li{ class: ('active' if %w[outbound_emails].include? controller_name) }
+        = link_to t('spina.admin.mail.website.outbound_emails'), spina.admin_mail_outbound_emails_path
+      %li{ class: ('active' if %w[mailboxes].include? controller_name) }
+        = link_to t('spina.admin.mail.website.mailboxes'), spina.admin_mail_mailboxes_path
+
+      %li
+        = link_to '#', class: 'back-to-main-menu' do
+          = icon('caret-left')
+          =t 'spina.main_menu'

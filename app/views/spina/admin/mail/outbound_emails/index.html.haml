@@ -1,0 +1,56 @@
+- content_for(:header_actions) do
+  = link_to spina.new_admin_mail_outbound_email_path, class: 'button button-primary', style: 'margin-right: 0' do
+    = icon('plus')
+    = t('spina.admin.mail.outbound_emails.new')
+
+- content_for(:tabs) do
+  %li.active
+    = link_to t('.all'), '#all'
+  - Spina::Admin::Mail::Mailbox.all.each do |mailbox|
+    %li
+      = link_to mailbox.display_name, "##{mailbox.display_name.parameterize}"
+
+#all.tab-content.active
+  .well
+    .table-container
+      %table.table
+        %thead
+          %tr
+            %th
+            %th= Spina::Admin::Mail::OutboundEmail.human_attribute_name :date
+            %th= Spina::Admin::Mail::OutboundEmail.human_attribute_name :to_addresses
+            %th= Spina::Admin::Mail::OutboundEmail.human_attribute_name :mailboxes
+            %th= Spina::Admin::Mail::OutboundEmail.human_attribute_name :subject
+            %th
+
+        %tbody
+          - if @outbound_emails.any?
+            = render partial: 'spina/admin/mail/shared/outbound_email', collection: @outbound_emails
+
+          - else
+            %tr
+              %td.align-center{ colspan: 100 }
+                %em= t('spina.admin.mail.outbound_emails.no_outbound_emails')
+
+- Spina::Admin::Mail::Mailbox.all.each do |mailbox|
+  .tab-content{ id: mailbox.display_name.parameterize }
+    .well
+      .table-container
+        %table.table
+          %thead
+            %tr
+              %th
+              %th= Spina::Admin::Mail::OutboundEmail.human_attribute_name :date
+              %th= Spina::Admin::Mail::OutboundEmail.human_attribute_name :to_addresses
+              %th= Spina::Admin::Mail::OutboundEmail.human_attribute_name :mailboxes
+              %th= Spina::Admin::Mail::OutboundEmail.human_attribute_name :subject
+              %th
+
+          %tbody
+            - if mailbox.outbound_emails.any?
+              = render partial: 'spina/admin/mail/shared/outbound_email', collection: mailbox.outbound_emails
+
+            - else
+              %tr
+                %td.align-center{ colspan: 100 }
+                  %em= t('spina.admin.mail.outbound_emails.no_outbound_emails')

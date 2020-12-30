@@ -1,0 +1,15 @@
+The following recipients you sent this message to do not exist:
+- @unknown_recipients.collect(&:to_s).each do |recipient|
+  ! • #{recipient}
+\
+Check the address(es) you entered again.
+\
+If you think you have received this message in error, contact the website maintainer.
+\
+In the original message, you wrote:
+!= format_paragraph(strip_tags(@text.body.decoded))
+\
+- if attachments.any?
+  Additionally, you attached #{attachments.count} file(s), also attached to this message:
+  - attachments.each do |attachment|
+    ! • #{attachment.filename}

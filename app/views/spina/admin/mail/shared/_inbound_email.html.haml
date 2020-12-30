@@ -1,0 +1,41 @@
+%tr
+  %td
+    - case inbound_email.read?
+    - when true
+      .label
+        = icon('check')
+        read
+    - when false
+      .label.label-primary
+        = icon('cross')
+        unread
+    - else
+      = nil
+    - case inbound_email.priority
+    - when /^high/
+      .label{ class: ('label-alert' unless inbound_email.read?) }
+        = icon('exclamation')
+        high priority
+    - when /^low/
+      .label{ class: ('label-info' unless inbound_email.read?) }
+        = icon('min')
+        low priority
+    - else
+      = nil
+  %td= l inbound_email.date, format: :short
+  %td
+    %ul
+      - inbound_email.from_addresses.each do |address|
+        %li= address.to_s
+  %td
+    %ul
+      - inbound_email.mailboxes.each do |mailbox|
+        %li= mailbox.display_name
+  %td= inbound_email.subject
+  %td.align-right
+    = link_to spina.admin_mail_inbound_email_path(inbound_email), class: 'button button-small button-link' do
+      = icon('eye')
+      = t('spina.show')
+    = link_to spina.edit_admin_mail_inbound_email_path(inbound_email), class: 'button button-small button-link' do
+      = icon('pencil-outline')
+      = t('spina.edit')

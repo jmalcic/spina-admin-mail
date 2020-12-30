@@ -1,0 +1,15 @@
+- return unless thread.emails.any?
+
+%tr
+  %td= l(thread.latest_email_date, format: :long)
+  %td{ colspan: 2 }
+    %ul
+      - thread.correspondents.each do |correspondent|
+        %li= correspondent
+  %td
+    - case thread.emails.latest.class
+    - when 'Spina::Admin::Mail::InboundEmail'
+      = link_to thread.emails.latest.subject, spina.admin_mail_inbound_email_path(thread.emails.latest), class: 'table-link'
+    - when 'Spina::Admin::Mail::OutboundEmail'
+      = link_to thread.emails.latest.subject, spina.admin_mail_outbound_email_path(thread.emails.latest), class: 'table-link'
+    - else nil

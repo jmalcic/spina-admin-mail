@@ -1,0 +1,13 @@
+- content_for :application do
+  %header#header
+    #header_actions
+      = yield(:header_actions)
+    = render partial: 'spina/admin/shared/breadcrumbs'
+    - if content_for? :tabs
+      %nav#secondary.tabs
+        %ul
+          = yield(:tabs)
+
+  = yield
+
+= render template: 'layouts/spina/admin/admin'

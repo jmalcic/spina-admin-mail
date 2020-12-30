@@ -1,0 +1,51 @@
+- content_for(:tabs) do
+  %li.active
+    = link_to t('.all'), '#all'
+  - Spina::Admin::Mail::Mailbox.all.each do |mailbox|
+    %li
+      = link_to mailbox.display_name, "##{mailbox.display_name.parameterize}"
+
+#all.tab-content.active
+  .well
+    .table-container
+      %table.table
+        %thead
+          %tr
+            %th
+            %th= Spina::Admin::Mail::InboundEmail.human_attribute_name :date
+            %th= Spina::Admin::Mail::InboundEmail.human_attribute_name :from_addresses
+            %th= Spina::Admin::Mail::InboundEmail.human_attribute_name :mailboxes
+            %th= Spina::Admin::Mail::InboundEmail.human_attribute_name :subject
+            %th
+
+        %tbody
+          - if @inbound_emails.any?
+            = render partial: 'spina/admin/mail/shared/inbound_email', collection: @inbound_emails
+
+          - else
+            %tr
+              %td.align-center{ colspan: 100 }
+                %em= t('spina.admin.mail.inbound_emails.no_inbound_emails')
+
+- Spina::Admin::Mail::Mailbox.all.each do |mailbox|
+  .tab-content{ id: mailbox.display_name.parameterize }
+    .well
+      .table-container
+        %table.table
+          %thead
+            %tr
+              %th
+              %th= Spina::Admin::Mail::InboundEmail.human_attribute_name :date
+              %th= Spina::Admin::Mail::InboundEmail.human_attribute_name :from_addresses
+              %th= Spina::Admin::Mail::InboundEmail.human_attribute_name :mailboxes
+              %th= Spina::Admin::Mail::InboundEmail.human_attribute_name :subject
+              %th
+
+          %tbody
+            - if mailbox.inbound_emails.any?
+              = render partial: 'spina/admin/mail/shared/inbound_email', collection: mailbox.inbound_emails
+
+            - else
+              %tr
+                %td.align-center{ colspan: 100 }
+                  %em= t('spina.admin.mail.inbound_emails.no_inbound_emails')

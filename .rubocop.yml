@@ -1,0 +1,12 @@
+---
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+
+Layout/LineLength:
+  Max: 140
+  AutoCorrect: true
+
+Style/CommandLiteral:
+  EnforcedStyle: mixed
